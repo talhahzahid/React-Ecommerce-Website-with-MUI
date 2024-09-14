@@ -6,6 +6,7 @@ import Layout from './Layout.jsx'
 import Home from './Pages/Home.jsx'
 import Contant from './Pages/Contant.jsx'
 import Notfind from './Pages/Notfind.jsx'
+import Singleproduct from './Pages/Singleproduct.jsx'
 
 
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path : 'contact',
         element : <Contant/>
+      },
+      {
+        path : 'singleproduct/:id',
+        element : <Singleproduct/>
       },
       {
         path : '*',

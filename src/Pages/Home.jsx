@@ -3,6 +3,9 @@
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { Box, Typography } from '@mui/material';
+import MultiActionAreaCard from '../Components/Card';
+
 
 const Home = () => {
   const [data , setData] = useState(null)
@@ -16,20 +19,38 @@ const Home = () => {
             
          })
     },[])
-  return (
- <>
- <h1>Home </h1>
- <div>
-  {
-    data ? (
-    data.map((item)=>(
-      <div key={item.id}><h1>{item.price}</h1></div>
-    ))
-    ):(<h1>loading....</h1>)
-  }
- </div>
- </>
-  )
+    return (
+      <Box>
+        <Typography variant='h4'className='text-center mt-3'>
+          Our Products
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 8,
+            justifyContent: 'center',
+            marginTop:"20px",
+          }}
+        >
+          {data ? (
+            data.map((item) => (
+              <Box key={item.id} sx={{ flex: '1 1 300px' }}>
+                <MultiActionAreaCard
+                  items={item}
+                  image={item.image}
+                  title={item.title}
+                  price={item.price}
+                />
+              </Box>
+            ))
+          ) : (
+            <Typography>Loading...</Typography>
+          )}
+        </Box>
+      </Box>
+    );
+  
 }
 
 export default Home
